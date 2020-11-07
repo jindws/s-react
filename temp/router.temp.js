@@ -5,13 +5,10 @@ import {
     Switch,
     Route,
 } from "react-router-dom";
-import Index from '@pages/index.jsx'
+import Index from '@pages/pages'
 
-{% for itm in list %}
-    import {
-import index from "@pages/index";
-
-{itm}} from '@pages/{{itm}}.jsx'
+{% for itm in List %}
+    import {{itm.name}} from '@pages/{{itm.path}}'
 {% endfor %}
 
 export default function Router() {
@@ -23,20 +20,17 @@ export default function Router() {
                         <li>
                             <Link to="/">Home</Link>
                         </li>
-                        {% for itm in list %}
+                        {% for itm in List %}
                             <li>
-                                <Link to={{'/'+itm}}>{{ itm }}</Link>
+                                <Link to='{{itm.name}}'>{{ itm.name }}</Link>
                             </li>
                         {% endfor %}
                     </ul>
                 </nav>
                 <Switch>
                     <Route path="/" component={Index}/>
-                    {% for itm in list %}
-                    <li>
-                        <Link to={{'/'+itm}}>{{ itm }}</Link>
-                        <Route path={{itm}} component={{itm}}/>
-                    </li>
+                    {% for itm in List %}
+                        <Route path='{{itm.name}}' component='{{itm.name}}'/>
                     {% endfor %}
                 </Switch>
             </div>
