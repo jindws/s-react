@@ -8,7 +8,7 @@ import {
 import Index from '@pages/index'
 
 {% for itm in List %}
-    import {{itm.name}} from '@pages/{{itm.path}}'
+import {{itm.name}} from '@pages/{{itm.path}}'
 {% endfor %}
 
 export default function Router() {
@@ -27,12 +27,10 @@ export default function Router() {
                         {% endfor %}
                     </ul>
                 </nav>
-                <Switch>
-                    <Route path="/" component={Index}/>
-                    {% for itm in List %}
-                        <Route path='/{{itm.name}}' component={ {{itm.name}} }/>
-                    {% endfor %}
-                </Switch>
+                <Route path="/" exact component={Index}/>
+                {% for itm in List %}
+                    <Route path='/{{itm.name}}' component={ {{itm.name}} }/>
+                {% endfor %}
             </div>
         </HashRouter>
     );
