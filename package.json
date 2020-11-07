@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --progress"
+    "start": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -31,8 +31,10 @@
     "webpack-cli": "^3.3.12"
   },
   "devDependencies": {
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
     "@types/react": "^16.9.56",
     "@types/react-router-dom": "^5.1.6",
+    "react-refresh": "^0.9.0",
     "webpack-dev-server": "^3.11.0"
   }
 }

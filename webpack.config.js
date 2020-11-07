@@ -1,15 +1,17 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const webpack = require('webpack')
 
 module.exports = {
     entry: {
-        main: './src/index.jsx'
+        main:  './src/index.jsx',
     },
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: "[name]-[hash:3].js",
     },
-    devtool: 'eval-cheap-module-source-map',
+    devtool:'eval-source-map',
     module:{
         rules: [
             {
@@ -27,6 +29,7 @@ module.exports = {
         open:true,
         hot:true,//开启HMR
         hotOnly:true,//不自动刷新浏览器
+        inline: true,
     },
     plugins: [new HtmlWebpackPlugin({
         title: 'title',//ejs语法  <title><%=htmlWebpackPlugin.options.title%></title>
@@ -38,7 +41,10 @@ module.exports = {
             collapseWhitespace:true,//删除空白符和换行符
             minifyCss:true,//压缩内联css
         },
-    })],
+    }),
+        new webpack.HotModuleReplacementPlugin(),//webpack自带的HMR插件
+        new ReactRefreshWebpackPlugin(),
+    ],
     resolve:{
         modules:[path.resolve(__dirname,'./node_modules')],
         extensions: ['.js','.jsx'],
