@@ -30,7 +30,7 @@ export default function Router() {
                 <Switch>
                     <Route path="/" component={Index}/>
                     {% for itm in List %}
-                        <Route path='{{itm.name}}' component='{{itm.name}}'/>
+                        <Route path='/{{itm.name}}' component={ {{itm.name}} }/>
                     {% endfor %}
                 </Switch>
             </div>

@@ -23,8 +23,8 @@ module.exports = {
     },
     devServer: {
         contentBase:path.resolve(__dirname,'/build'),
-        port:8080,
-        open:false,
+        port:3000,
+        open:true,
         hot:true,//开启HMR
         hotOnly:true,//不自动刷新浏览器
     },
