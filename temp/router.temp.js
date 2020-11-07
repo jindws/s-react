@@ -5,7 +5,7 @@ import {
     Switch,
     Route,
 } from "react-router-dom";
-import Index from '@pages/pages'
+import Index from '@pages/index'
 
 {% for itm in List %}
     import {{itm.name}} from '@pages/{{itm.path}}'
